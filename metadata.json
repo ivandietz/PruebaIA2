@@ -1,0 +1,5 @@
+{
+  "name": "Consulta de Productos Automotrices",
+  "description": "Una aplicación para buscar y ver detalles de productos automotrices en una base de datos simulada.",
+  "requestFramePermissions": []
+}
