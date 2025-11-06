@@ -53,9 +53,11 @@ const App: React.FC = () => {
   const filteredProducts = useMemo(() => {
     return AUTOMOTIVE_PRODUCTS.filter(product => {
         const matchesCategory = selectedCategory === 'All' || product.category === selectedCategory;
+        const lowerCaseSearchTerm = searchTerm.toLowerCase();
         const matchesSearch = 
-            product.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-            product.id.toLowerCase().includes(searchTerm.toLowerCase());
+            product.name.toLowerCase().includes(lowerCaseSearchTerm) ||
+            product.id.toLowerCase().includes(lowerCaseSearchTerm) ||
+            product.description.toLowerCase().includes(lowerCaseSearchTerm);
         return matchesCategory && matchesSearch;
     });
   }, [searchTerm, selectedCategory]);
@@ -81,7 +83,7 @@ const App: React.FC = () => {
             <ProductSearch 
                 value={searchTerm} 
                 onChange={setSearchTerm}
-                placeholder="Buscar por nombre o código (ej: SP-101)"
+                placeholder="Buscar por nombre, código o descripción"
             />
             <div className="relative">
                  <select
